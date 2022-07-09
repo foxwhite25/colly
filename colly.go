@@ -1160,7 +1160,7 @@ func (c *Collector) handleOnXML(resp *Response) error {
 			}
 		}
 	} else if strings.Contains(contentType, "xml") || isXMLFile {
-		doc, err := xmlquery.Parse(bytes.NewBuffer(bytes.Trim(resp.Body, "\x00")))
+		doc, err := xmlquery.Parse(bytes.NewBuffer(bytes.Trim(resp.Body, "\u0000")))
 		if err != nil {
 			return err
 		}
